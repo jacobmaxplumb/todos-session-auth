@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.set('trust proxy', 1);
 app.use(cors({
     origin: (origin, callback) => {
         callback(null, origin); // Reflect the origin back
