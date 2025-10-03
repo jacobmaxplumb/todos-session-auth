@@ -15,8 +15,12 @@ app.use(expressSession({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }
-}))
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'none'
+    }
+}));
 
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
