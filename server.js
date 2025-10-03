@@ -9,7 +9,12 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: (origin, callback) => {
+        callback(null, origin); // Reflect the origin back
+    },
+    credentials: true
+}));
 
 app.use(expressSession({
     secret: 'your-secret-key',
