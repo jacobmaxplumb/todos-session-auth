@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const cors = require('cors');
 const expressSession = require('express-session');
 const { addUser, findByUsername } = require('./users');
 const { getTodos, addTodo, markTodoCompleted, deleteTodo } = require('./todos');
@@ -8,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.use(cors());
 
 app.use(expressSession({
     secret: 'your-secret-key',
